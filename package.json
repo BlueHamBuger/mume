@@ -59,7 +59,8 @@
     "twemoji": "^13.1.0",
     "uslug": "^1.0.4",
     "vega-loader": "^4.1.0",
-    "yamljs": "^0.3.0"
+    "yamljs": "^0.3.0",
+    "yarn": "^1.22.19"
   },
   "devDependencies": {
     "@types/cheerio": "0.22.11",
