@@ -76,7 +76,19 @@ class PlantUMLTask {
           if (diagram.length) {
             const callback = this.callbacks.shift();
             if (callback) {
-              callback(diagram.startsWith("<") ? diagram : "<?xml " + diagram);
+              let str = diagram.startsWith("<") ? diagram : "<?xml " + diagram;
+              let regex = /<[^<]+title="([^"]+)"[^>]*>/g;
+              let matches = str.matchAll(regex);
+              let str_fragment = [];
+              let former_idx = 0;
+              for (const match of matches) {
+                let new_idx = match.index + match[0].length;
+                str_fragment.push(str.substring(former_idx, new_idx));
+                former_idx = new_idx;
+                str_fragment.push("<title>" + match[1] + "</title>");
+              }
+              str_fragment.push(str.substring(former_idx));
+              callback(str_fragment.join(""));
             }
           }
         });

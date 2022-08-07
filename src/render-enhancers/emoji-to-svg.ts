@@ -1,5 +1,5 @@
 import { resolve } from "path";
-import * as twemoji from "twemoji";
+import twemoji from "twemoji";
 
 /**
  * Replace emoji with svg.
